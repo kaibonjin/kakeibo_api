@@ -1,0 +1,9 @@
+--create database if not exists kakeibo_api;
+--use kakeibo_api;
+--CREATE TABLE IF NOT EXISTS messages (
+--  id                     VARCHAR(60)  DEFAULT RANDOM_UUID() PRIMARY KEY,
+--  first_name             VARCHAR      NOT NULL
+--  last_name              VARCHAR      NOT NULL
+--  username               VARCHAR      NOT NULL
+--  password               VARCHAR      NOT NULL
+--);
