@@ -7,11 +7,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 public class User {
     /**
      * User Entity
@@ -24,4 +26,7 @@ public class User {
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> role = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<Expense> expenses = new ArrayList<>();
+
 }
