@@ -10,6 +10,6 @@ public class ExpensesController {
 
     @PostMapping("/expenses")
     public void getExpenses () {
-        service
+
     }
 }
