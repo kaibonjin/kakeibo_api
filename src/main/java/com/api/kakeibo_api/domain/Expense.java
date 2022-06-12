@@ -1,15 +1,21 @@
 package com.api.kakeibo_api.domain;
 
+import com.api.kakeibo_api.form.ExpenseRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
-@Entity @Data @NoArgsConstructor @AllArgsConstructor @Table(name = "expenses")
+@Entity
+@Data //creates getters and setters for each property
+@NoArgsConstructor //TODO: understand what this does
+@AllArgsConstructor //TODO: understand what this does
+@Table(name = "expenses")
 public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,11 +33,18 @@ public class Expense {
     private Date date;
 
     // TODO add categoryId
-    @CreatedDate
+    @CreationTimestamp
     @Column(nullable = false)
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     @Column(nullable = false)
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
+
+    public Expense (ExpenseRequest expenseRequest) {
+        this.user = ;
+        this.amount = expenseRequest.getAmount();
+        this.memo = expenseRequest.getMemo();
+        this.date = expenseRequest.getDate();
+    }
 }
