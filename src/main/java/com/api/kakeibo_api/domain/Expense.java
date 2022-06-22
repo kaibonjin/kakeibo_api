@@ -1,50 +1,33 @@
 package com.api.kakeibo_api.domain;
 
-import com.api.kakeibo_api.form.ExpenseRequest;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.seasar.doma.Column;
+import org.seasar.doma.Entity;
+import org.seasar.doma.GeneratedValue;
+import org.seasar.doma.GenerationType;
+import org.seasar.doma.Id;
+import org.seasar.doma.Table;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Data //creates getters and setters for each property
-@NoArgsConstructor //TODO: understand what this does
-@AllArgsConstructor //TODO: understand what this does
 @Table(name = "expenses")
+@Data
 public class Expense {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
-    @ManyToOne
-    private User user;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(nullable = false)
-    private int amount;
+  @Column() private int amount;
 
-    private String memo;
+  @Column() private String memo;
 
-    @Column(nullable = false)
-    private Date date;
+  @Column() private Date date;
 
-    // TODO add categoryId
-    @CreationTimestamp
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
+  // TODO add categoryId
+  @Column() private LocalDateTime createdAt;
 
-    @UpdateTimestamp
-    @Column(nullable = false)
-    private LocalDateTime updatedAt;
-
-    public Expense (ExpenseRequest expenseRequest) {
-        this.user = ;
-        this.amount = expenseRequest.getAmount();
-        this.memo = expenseRequest.getMemo();
-        this.date = expenseRequest.getDate();
-    }
+  @Column() private LocalDateTime updatedAt;
 }
