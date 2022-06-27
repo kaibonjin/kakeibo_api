@@ -2,13 +2,12 @@ package com.api.kakeibo_api.form;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class ExpenseRequest {
-
-    private int amount;
-    private String memo;
-    private Long userId;
-    private Date date;
+  private int userId;
+  private int amount;
+  private String memo;
+  private LocalDate date;
 }

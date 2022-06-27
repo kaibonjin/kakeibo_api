@@ -1,9 +1,9 @@
 package com.api.kakeibo_api.service;
 
-import com.api.kakeibo_api.DTO.ExpenseDTO;
+import com.api.kakeibo_api.dao.ExpenseDao;
 import com.api.kakeibo_api.domain.Expense;
 import com.api.kakeibo_api.form.ExpenseRequest;
-import com.api.kakeibo_api.repo.ExpensesRepo;
+import com.api.kakeibo_api.responseDto.ExpenseResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,13 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ExpensesService {
-    private final ExpensesRepo expensesRepo;
+  private final ExpenseDao expenseDao;
 
-    public ExpenseDTO saveExpense(ExpenseRequest expenseRequest) {
-        log.info("saving Expense into db");
-        return new ExpenseDTO(expensesRepo.save(new Expense(expenseRequest)));
-    }
+  public ExpenseResponseDto saveExpense(ExpenseRequest expenseRequest) {
+    Expense expense = new Expense(expenseRequest);
+    log.info("saving Expense into db");
+    Expense expenseEntity = expenseDao.insertExpense(expense).getEntity();
+
+    return new ExpenseResponseDto(expenseEntity);
+  }
 }

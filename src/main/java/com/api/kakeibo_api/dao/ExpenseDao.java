@@ -10,5 +10,5 @@ import org.seasar.doma.jdbc.Result;
 @Dao
 public interface ExpenseDao {
   @Insert
-  Result<Expense> insertExpense();
+  Result<Expense> insertExpense(Expense expense);
 }
