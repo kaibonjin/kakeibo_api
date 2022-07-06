@@ -1,4 +1,4 @@
-package com.api.kakeibo_api.domain;
+package com.api.kakeibo_api.entity;
 
 import com.api.kakeibo_api.form.ExpenseRequest;
 import lombok.Data;
@@ -19,26 +19,26 @@ import java.time.LocalDateTime;
 @Table(name = "expenses")
 @Data
 @NoArgsConstructor
-public class Expense {
+public class ExpenseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column() private int userId;
+  @Column(name = "user_id") private int userId;
 
-  @Column() private int amount;
+  @Column(name = "amount") private int amount;
 
-  @Column() private String memo;
+  @Column(name = "memo") private String memo;
 
-  @Column() private LocalDate date;
+  @Column(name ="date") private LocalDate date;
 
   // TODO add categoryId
-  @Column() @CreationTimestamp private LocalDateTime createdAt;
+  @Column(name = "created_at") @CreationTimestamp private LocalDateTime createdAt;
 
-  @Column() @UpdateTimestamp private LocalDateTime updatedAt;
+  @Column(name = "updated_at") @UpdateTimestamp private LocalDateTime updatedAt;
 
-  public Expense(ExpenseRequest expenseRequest) {
+  public ExpenseEntity(ExpenseRequest expenseRequest) {
     userId = expenseRequest.getUserId();
     amount = expenseRequest.getAmount();
     memo = expenseRequest.getMemo();

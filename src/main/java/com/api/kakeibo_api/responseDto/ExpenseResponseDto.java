@@ -1,6 +1,6 @@
 package com.api.kakeibo_api.responseDto;
 
-import com.api.kakeibo_api.domain.Expense;
+import com.api.kakeibo_api.entity.ExpenseEntity;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -12,7 +12,7 @@ public class ExpenseResponseDto {
   private int userId;
   private LocalDate date;
 
-  public ExpenseResponseDto(Expense expenseEntity) {
+  public ExpenseResponseDto(ExpenseEntity expenseEntity) {
     amount = expenseEntity.getAmount();
     memo = expenseEntity.getMemo();
     userId = expenseEntity.getUserId();

@@ -1,7 +1,7 @@
 package com.api.kakeibo_api.service;
 
 import com.api.kakeibo_api.dao.ExpenseDao;
-import com.api.kakeibo_api.domain.Expense;
+import com.api.kakeibo_api.entity.ExpenseEntity;
 import com.api.kakeibo_api.form.ExpenseRequest;
 import com.api.kakeibo_api.responseDto.ExpenseResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +15,10 @@ public class ExpensesService {
   private final ExpenseDao expenseDao;
 
   public ExpenseResponseDto saveExpense(ExpenseRequest expenseRequest) {
-    Expense expense = new Expense(expenseRequest);
+    ExpenseEntity expense = new ExpenseEntity(expenseRequest);
     log.info("saving Expense into db");
-    Expense expenseEntity = expenseDao.insertExpense(expense).getEntity();
+    expenseDao.insertExpense(expense);
 
-    return new ExpenseResponseDto(expenseEntity);
+    return new ExpenseResponseDto(expense);
   }
 }
