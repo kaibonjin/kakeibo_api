@@ -3,16 +3,7 @@ package com.api.kakeibo_api;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(
-    scanBasePackages = {
-      "com.api.kakeibo_api.controller",
-      "com.api.kakeibo_api.domain",
-      "com.api.kakeibo_api.repo",
-      "com.api.kakeibo_api.request",
-      "com.api.kakeibo_api.service",
-      "com.api.kakeibo-api.security",
-      "com.api.kakeibo-api.filter"
-    })
+@SpringBootApplication
 public class KakeiboApiApplication {
 
   public static void main(String[] args) {
